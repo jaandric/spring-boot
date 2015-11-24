@@ -16,29 +16,55 @@
 
 package sample.jsp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import sample.jsp.beans.User;
 
 @Controller
 public class WelcomeController {
 
-	@Value("${application.message:Hello World}")
-	private String message = "Hello World";
-
 	@RequestMapping("/")
-	public String welcome(Map<String, Object> model) {
+	public String welcome(final Map<String, Object> model) {
 		model.put("time", new Date());
-		model.put("message", this.message);
+		model.put("message", "Hallloo");
+		final List<String> imena = new ArrayList<String>();
+
+		imena.add("Jakov");
+		imena.add("Jakov2");
+		imena.add("Jakov3");
+		imena.add("Jakov4");
+
+		model.put("imena", imena);
+
+		final Map<Integer, String> mape = new HashMap<Integer, String>();
+		mape.put(1, "jedan");
+		mape.put(2, "dva");
+		mape.put(3, "tri");
+		mape.put(4, "cetri");
+
+		model.put("mape", mape);
+
+		final User user = new User();
+		user.setAge(25);
+		user.setName("Jakov");
+		user.setPassword("12345");
+		user.setUsername("jandric");
+
+		model.put("user", user);
+
 		return "welcome";
 	}
 
-	@RequestMapping("/foo")
-	public String foo(Map<String, Object> model) {
-		throw new RuntimeException("Foo");
+	@RequestMapping("/next")
+	public String next(final Map<String, Object> model) {
+		model.put("prezime", "Andric");
+		return "next";
 	}
-
 }

@@ -25,11 +25,11 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 public class SampleWebJspApplication extends SpringBootServletInitializer {
 
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	protected SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
 		return application.sources(SampleWebJspApplication.class);
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(final String[] args) throws Exception {
 		SpringApplication.run(SampleWebJspApplication.class, args);
 	}
 
